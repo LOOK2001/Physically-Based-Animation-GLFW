@@ -2,6 +2,7 @@
 
 #include "Object.h"
 #include "tests/TestTexture2D.h"
+#include "pba/things/BouncingBalls.h"
 
 #include <iostream>
 

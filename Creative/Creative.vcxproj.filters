@@ -22,6 +22,12 @@
     <Filter Include="Source Files\pba\core">
       <UniqueIdentifier>{f695f81d-5551-4b0f-99e8-260574f03483}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\pba\things">
+      <UniqueIdentifier>{d8435a23-8cbf-436f-81c3-e8a4de9ace97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\pba\base">
+      <UniqueIdentifier>{5f601168-f223-4c84-9ff5-78b97b024be8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -62,6 +68,42 @@
     </ClCompile>
     <ClCompile Include="pba\core\PbaViewer.cpp">
       <Filter>Source Files\pba\core</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\core\LinearAlgebra.cpp">
+      <Filter>Source Files\pba\core</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\core\Matrix.cpp">
+      <Filter>Source Files\pba\core</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\CollisionHandler.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\CollisionSurface.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\CollisionTriangle.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\ForceLibrary.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\GISolver.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\ParticleEmitter.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\PbaUtils.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\AABB.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\TraceTree.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\ExplicitDynamics.cpp">
+      <Filter>Source Files\pba\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +151,48 @@
     </ClInclude>
     <ClInclude Include="pba\core\PbaViewer.h">
       <Filter>Source Files\pba\core</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\things\BouncingBalls.h">
+      <Filter>Source Files\pba\things</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\core\LinearAlgebra.h">
+      <Filter>Source Files\pba\core</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\core\Matrix.h">
+      <Filter>Source Files\pba\core</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\CollisionHandler.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\CollisionSurface.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\CollisionTriangle.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\ExplicitDynamics.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\Force.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\ForceLibrary.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\GISolver.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\ParticleEmitter.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\PbaUtils.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\AABB.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\TraceTree.h">
+      <Filter>Source Files\pba\base</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
