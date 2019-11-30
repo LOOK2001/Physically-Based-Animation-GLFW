@@ -104,7 +104,7 @@ void PbaViewer::Keyboard_callback(GLFWwindow* window, int key, int scancode, int
 	}
 }
 
-int PbaViewer::Init(const std::vector<std::string>& args)
+int PbaViewer::Initialize()
 {
 	// glfw: initialize and configure
 	// ------------------------------
@@ -112,10 +112,6 @@ int PbaViewer::Init(const std::vector<std::string>& args)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-#ifdef __APPLE__
-	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // uncomment this statement to fix compilation on OS X
-#endif
 
 	// glfw window creation
 	// --------------------
@@ -145,6 +141,16 @@ int PbaViewer::Init(const std::vector<std::string>& args)
 
 	// configure global opengl state
 	glEnable(GL_DEPTH_TEST);
+}
+
+void PbaViewer::Init(const std::vector<std::string>& args)
+{
+	for (size_t i = 0; i < things.size(); i++)
+	{
+		things[i]->Init(args);
+	}
+	initialized = true;
+	cout << "PbaViewer Initialized\n";
 }
 
 void PbaViewer::MainLoop()
@@ -243,6 +249,7 @@ void PbaViewer::Usage()
 PbaViewer* PbaViewer::pPbaViewer = nullptr;
 
 PbaViewer::PbaViewer()
+	:initialized(false)
 {
 	renderer = new Renderer();
 

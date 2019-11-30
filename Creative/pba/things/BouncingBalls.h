@@ -12,6 +12,8 @@
 #include "../base/ParticleEmitter.h"
 #include "../base/PbaUtils.h"
 
+#include "../../game/particle_generator.h"
+
 #include <cstdlib>
 
 #include <iostream>
@@ -26,7 +28,7 @@ namespace pba {
 			emitter(ParticleEmitter(Vector(0, 0, 0), Vector(0, 0, 0), 0.25, 1.0))
 		{
 			state = CreateDynamicalState(name + "DynamicalData");
-			state->add(1);
+			state->add(100);
 			force = CreateSimpleGravityForce(pba::Vector(0.0, -1.0, 0.0));
 			GISolver solvera = CreateAdvancePosition(state, collisions);
 			GISolver solverb = CreateAdvanceVelocity(state, force);
@@ -35,81 +37,95 @@ namespace pba {
 		}
 		~BouncingBallsThing() {}
 
-		void Init(const std::vector<std::string>& args) {}
+		void Init(const std::vector<std::string>& args) 
+		{
+			CollisionSurface cube = pba::GenerateCollisionCube(10.0);
+			AddCollisionSurface(cube);
+
+			for (size_t i = 0; i < state->nb(); i++)
+			{
+				Vector v = Vector(drand48(), drand48(), drand48());
+				state->set_vel(i, v);
+			}
+			particle = new ParticleGenerator(state->nb(), state);
+			particle->Init();
+		}
 
 		// Callback function
 		void Display()
 		{
-			pba::Display(box);
+// 			pba::Display(box);
+// 
+// 			glPointSize(5.0);
+// 			glBegin(GL_POINTS);
+// 			for (size_t i = 0; i < state->nb(); i++)
+// 			{
+// 				const Color& ci = state->ci(i);
+// 				const pba::Vector& v = state->pos(i);
+// 
+// 				glColor4f(ci.red(), ci.green(), ci.blue(), 1.0f);
+// 				glVertex3f(v.X(), v.Y(), v.Z());
+// 			}
+// 			glEnd();
 
-			glPointSize(5.0);
-			glBegin(GL_POINTS);
-			for (size_t i = 0; i < state->nb(); i++)
-			{
-				const Color& ci = state->ci(i);
-				const pba::Vector& v = state->pos(i);
-
-				glColor4f(ci.red(), ci.green(), ci.blue(), 1.0f);
-				glVertex3f(v.X(), v.Y(), v.Z());
-			}
-			glEnd();
+			particle->Display();
 		}
 
 		void Keyboard(int key, int scancode, int action, int mods)
 		{
 			PbaThingyDingy::Keyboard(key, scancode, action, mods);
-			if (key == 'v') { box->toggle_visible(); }
-			if (key == 'w') { box->toggle_wireframe(); }
-			if (key == 'e') { emit = !emit; }
-			if (key == 'g')
-			{
-				std::shared_ptr<SimpleGravityForce> f = dynamic_pointer_cast<SimpleGravityForce>(force);
-				f->set_gravity_constant(f->get_gravity_constant() / 1.1);
-			}
-			if (key == 'G')
-			{
-				std::shared_ptr<SimpleGravityForce> f = dynamic_pointer_cast<SimpleGravityForce>(force);
-				f->set_gravity_constant(f->get_gravity_constant() * 1.1);
-			}
-			if (key == 'c')
-			{
-				box->set_coeff_restitution(box->coeff_restitution() / 1.1);
-				std::cout << "coefficient of restituion: " << box->coeff_restitution() << std::endl;
-			}
-			if (key == 'C')
-			{
-				box->set_coeff_restitution(box->coeff_restitution() * 1.1);
-				std::cout << "coefficient of restituion: " << box->coeff_restitution() << std::endl;
-			}
-			if (key == 's')
-			{
-				box->set_coeff_sticky(box->coeff_sticky() / 1.1);
-				std::cout << "coefficient of sticky: " << box->coeff_sticky() << std::endl;
-			}
-			if (key == 'S')
-			{
-				box->set_coeff_sticky(box->coeff_sticky() * 1.1);
-				std::cout << "coefficient of sticky: " << box->coeff_sticky() << std::endl;
-			}
-			if (key == 'l')
-			{
-				GISolver solvera = CreateAdvancePosition(state, collisions);
-				GISolver solverb = CreateAdvanceVelocity(state, force);
-				solver = CreateLeapFrogSolver(solvera, solverb);
-				std::cout << "Using Leap Frog solver" << std::endl;
-			}
-			if (key == 'f')
-			{
-				GISolver solvera = CreateAdvancePosition(state, collisions);
-				GISolver solverb = CreateAdvanceVelocity(state, force);
-				solver = CreateForwardEulerSolver(solvera, solverb);
-				std::cout << "Using Forward Euler solver" << std::endl;
-			}
-			if (key == 'm')
-			{
-				pba::combineCollisionSurface(box, boxS);
-				std::cout << "Create another smaller cube inside the scene" << std::endl;
-			}
+// 			if (key == 'v') { box->toggle_visible(); }
+// 			if (key == 'w') { box->toggle_wireframe(); }
+// 			if (key == 'e') { emit = !emit; }
+// 			if (key == 'g')
+// 			{
+// 				std::shared_ptr<SimpleGravityForce> f = dynamic_pointer_cast<SimpleGravityForce>(force);
+// 				f->set_gravity_constant(f->get_gravity_constant() / 1.1);
+// 			}
+// 			if (key == 'G')
+// 			{
+// 				std::shared_ptr<SimpleGravityForce> f = dynamic_pointer_cast<SimpleGravityForce>(force);
+// 				f->set_gravity_constant(f->get_gravity_constant() * 1.1);
+// 			}
+// 			if (key == 'c')
+// 			{
+// 				box->set_coeff_restitution(box->coeff_restitution() / 1.1);
+// 				std::cout << "coefficient of restituion: " << box->coeff_restitution() << std::endl;
+// 			}
+// 			if (key == 'C')
+// 			{
+// 				box->set_coeff_restitution(box->coeff_restitution() * 1.1);
+// 				std::cout << "coefficient of restituion: " << box->coeff_restitution() << std::endl;
+// 			}
+// 			if (key == 's')
+// 			{
+// 				box->set_coeff_sticky(box->coeff_sticky() / 1.1);
+// 				std::cout << "coefficient of sticky: " << box->coeff_sticky() << std::endl;
+// 			}
+// 			if (key == 'S')
+// 			{
+// 				box->set_coeff_sticky(box->coeff_sticky() * 1.1);
+// 				std::cout << "coefficient of sticky: " << box->coeff_sticky() << std::endl;
+// 			}
+// 			if (key == 'l')
+// 			{
+// 				GISolver solvera = CreateAdvancePosition(state, collisions);
+// 				GISolver solverb = CreateAdvanceVelocity(state, force);
+// 				solver = CreateLeapFrogSolver(solvera, solverb);
+// 				std::cout << "Using Leap Frog solver" << std::endl;
+// 			}
+// 			if (key == 'f')
+// 			{
+// 				GISolver solvera = CreateAdvancePosition(state, collisions);
+// 				GISolver solverb = CreateAdvanceVelocity(state, force);
+// 				solver = CreateForwardEulerSolver(solvera, solverb);
+// 				std::cout << "Using Forward Euler solver" << std::endl;
+// 			}
+// 			if (key == 'm')
+// 			{
+// 				pba::combineCollisionSurface(box, boxS);
+// 				std::cout << "Create another smaller cube inside the scene" << std::endl;
+// 			}
 		}
 
 		void solve()
@@ -130,6 +146,8 @@ namespace pba {
 				}
 			}
 			solver->solve(dt);
+
+			particle->OnUpdate(0.0f);
 		}
 
 		void Reset()
@@ -189,6 +207,8 @@ namespace pba {
 		pba::CollisionSurface boxS;
 		pba::ElasticCollisionHandler collisions;
 		pba::ParticleEmitter emitter;
+
+		ParticleGenerator* particle;
 	};
 
 	pba::PbaThing BouncingBalls() { return PbaThing(new BouncingBallsThing()); }

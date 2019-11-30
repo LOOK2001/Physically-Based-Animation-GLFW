@@ -14,7 +14,9 @@ namespace pba
 	class CollisionHandler
 	{
 	public:
-		CollisionHandler() {}
+		CollisionHandler()
+			:tree(nullptr), usetree(false)
+		{}
 		virtual ~CollisionHandler() {
  			if (tree)
  				delete tree;

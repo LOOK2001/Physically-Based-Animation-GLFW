@@ -28,6 +28,9 @@
     <Filter Include="Source Files\pba\base">
       <UniqueIdentifier>{5f601168-f223-4c84-9ff5-78b97b024be8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{7388e37d-258b-409d-8a0c-9a7ed03eb7bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -104,6 +107,12 @@
     </ClCompile>
     <ClCompile Include="pba\base\ExplicitDynamics.cpp">
       <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="game\particle_generator.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="common.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +202,12 @@
     </ClInclude>
     <ClInclude Include="pba\base\TraceTree.h">
       <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="game\particle_generator.h">
+      <Filter>Source Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

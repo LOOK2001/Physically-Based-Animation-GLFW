@@ -39,6 +39,14 @@ class Color
       xyzw[3] = d; 
    }
 
+   Color(const float v)
+   {
+	   xyzw[0] = v;
+	   xyzw[1] = v;
+	   xyzw[2] = v;
+	   xyzw[3] = v;
+   }
+
    ~Color(){}
 
    //!  Set all four components

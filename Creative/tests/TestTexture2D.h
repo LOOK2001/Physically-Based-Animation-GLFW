@@ -13,6 +13,8 @@ namespace pba {
 		TestTexture2D(const std::string nam = "SBDAreaClothThing");
 		~TestTexture2D() {};
 
+		virtual void Init(const std::vector<std::string>& args);
+
 		void OnUpdate(float deltaTime) override;
 		virtual void Display() override;
 

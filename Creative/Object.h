@@ -13,7 +13,13 @@ namespace pba {
 	class Object
 	{
 	public:
-		Object(){}
+		Object()
+			:m_VAO(nullptr),
+			m_VertexBuffer(nullptr),
+			m_IndexBuffer(nullptr),
+			m_Shader(nullptr),
+			m_Texture(nullptr)
+		{}
 		virtual ~Object() {}
 
 		virtual void OnUpdate(float deltaTime) {}

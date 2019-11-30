@@ -29,8 +29,9 @@ public:
 
 	~PbaViewer() {};
 
+	int Initialize();
 	//! Initialization, including GLUT initialization.
-	int Init(const std::vector<std::string>& args);
+	void Init(const std::vector<std::string>& args);
 	//! render loop
 	void MainLoop();
 
@@ -78,7 +79,8 @@ private:
 	static void Keyboard_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
 private:
-	//static PbaViewer* pMainCamera;
+	bool initialized;
+
 	static PbaViewer* pPbaViewer;
 	static Camera* pMainCamera;
 
