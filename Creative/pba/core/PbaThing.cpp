@@ -7,7 +7,7 @@ using namespace pba;
 
 pba::PbaThingyDingy::PbaThingyDingy(const std::string& nam /*= "PbaThingyDingyNoName"*/):
 	visible(true),
-	dt(1.0 / 24.0)/*(1.0/240.0)*/,
+	dt(1.0 / 240.0)/*(1.0/24.0)*/,
 	name(nam),
 	animate(true)
 {}

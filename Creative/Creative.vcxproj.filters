@@ -31,6 +31,9 @@
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{7388e37d-258b-409d-8a0c-9a7ed03eb7bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\common">
+      <UniqueIdentifier>{8eab2a1c-94ad-486c-a88b-8a702110e236}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -113,6 +116,18 @@
     </ClCompile>
     <ClCompile Include="common.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="common\AsciiParser.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="common\ObjParser.cpp">
+      <Filter>Source Files\common</Filter>
+    </ClCompile>
+    <ClCompile Include="pba\base\CollisionSphere.cpp">
+      <Filter>Source Files\pba\base</Filter>
+    </ClCompile>
+    <ClCompile Include="game\PbaActor.cpp">
+      <Filter>Source Files\game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +223,24 @@
     </ClInclude>
     <ClInclude Include="common.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common\AsciiParser.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ObjParser.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\Model.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\MeshData.h">
+      <Filter>Source Files\common</Filter>
+    </ClInclude>
+    <ClInclude Include="pba\base\CollisionSphere.h">
+      <Filter>Source Files\pba\base</Filter>
+    </ClInclude>
+    <ClInclude Include="game\PbaActor.h">
+      <Filter>Source Files\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

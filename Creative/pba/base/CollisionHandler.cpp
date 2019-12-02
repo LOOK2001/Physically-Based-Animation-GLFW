@@ -38,7 +38,7 @@ void pba::ElasticCollisionHandler::handle_collisions(const double dt, DynamicalS
 	{
 		for (int i = 0; i < S->nb(); i++)
 		{
-			pba::CollisionData CD{ dt, nullptr, false, false, false, 0 };// = new pba::CollisionData;
+			pba::CollisionData CD{ dt, nullptr, nullptr, false, false, false, 0 };// = new pba::CollisionData;
 			while (surf->hit(S->pos(i), S->vel(i), CD.t, CD))
 			{
 				Vector v = S->vel(i);
@@ -62,7 +62,7 @@ void pba::ElasticCollisionHandler::handle_collisions(const double dt, DynamicalS
 //#pragma omp parallel for
 		for (int i = 0; i < S->nb(); i++)
 		{
-			pba::CollisionData CD{ dt, nullptr, false, false, false, 0 };// = new pba::CollisionData;
+			pba::CollisionData CD{ dt, nullptr, nullptr, false, false, false, 0 };// = new pba::CollisionData;
 			while (tree->hit(S->pos(i), S->vel(i), CD.t, CD))
 			{		
 				Vector v = S->vel(i);

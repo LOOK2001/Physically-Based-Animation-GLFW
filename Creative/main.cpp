@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 	pba::PbaThing currentTest = pba::TextureThing();
 	pba::PbaThing pbaTest = pba::BouncingBalls();
 
-	viewer->AddThing(currentTest);
+	//viewer->AddThing(currentTest);
 	viewer->AddThing(pbaTest);
 
 	viewer->Init(vec);
